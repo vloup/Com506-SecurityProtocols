@@ -1,0 +1,154 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw"
+    version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="rectangle" id="id1796003166">
+            <rect x="141.0" y="21.0" width="318.0" height="58.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="#df6fdf"/>
+        </g>
+        <g latexdraw:type="text" id="id650151175" fill="black" latexdraw:position="bl">
+            <text x="240.0" y="60.0">\huge Plaintext</text>
+        </g>
+        <g latexdraw:type="rectangle" id="id736826020">
+            <rect x="141.0" y="581.0" width="318.0" height="58.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="#1fb61f"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id1537128355">
+            <rect x="461.0" y="581.0" width="158.0" height="58.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="#e3e317"/>
+        </g>
+        <g latexdraw:type="text" id="id978294409" fill="black" latexdraw:position="bl">
+            <text x="215.34090909090935" y="628.484848484849">\huge Ciphertext</text>
+        </g>
+        <g latexdraw:type="text" id="id1241721223" fill="black" latexdraw:position="bl">
+            <text x="500.0" y="620.0">\huge TAG</text>
+        </g>
+        <g latexdraw:type="rectangle" id="id223061387">
+            <rect x="141.0" y="121.0" width="598.0" height="418.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="#9d65dd"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id1339972026">
+            <rect x="481.0" y="421.0" width="118.0" height="78.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="white"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id1291163449">
+            <rect x="201.0" y="161.0" width="198.0" height="138.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="white"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id249124534">
+            <polyline points="300.0,80.0 300.0,160.0 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-249124534)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id1649264182">
+            <polyline points="300.0,300.0 300.0,580.0 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-1649264182)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id726167354">
+            <polyline points="300.0,360.0 540.0,360.0 "
+                stroke-width="2.0" stroke="black" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id738040011">
+            <polyline points="540.0,360.0 540.0,420.0 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-738040011)"/>
+        </g>
+        <g latexdraw:type="text" id="id1620941400" fill="black" latexdraw:position="bl">
+            <text x="220.0" y="265.0">\huge Encryption</text>
+        </g>
+        <g latexdraw:type="text" id="id1863841399" fill="black" latexdraw:position="bl">
+            <text x="660.0" y="480.0">\LARGE $K_m$</text>
+        </g>
+        <g latexdraw:type="text" id="id258478548" fill="black" latexdraw:position="bl">
+            <text x="460.0" y="260.0">\LARGE $K_e$</text>
+        </g>
+        <g latexdraw:type="joinedLines" id="id600794644">
+            <polyline points="460.0,240.0 400.0,240.0 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-600794644)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id678298780">
+            <polyline points="660.0,460.0 600.0,460.0 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-678298780)"/>
+        </g>
+        <g latexdraw:type="text" id="id272016718" fill="black" latexdraw:position="bl">
+            <text x="491.428571428572" y="480.00000000000034">\Huge MAC</text>
+        </g>
+        <g latexdraw:type="rectangle" id="id1218709808">
+            <rect x="321.0" y="161.0" width="78.0" height="58.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="#18cece"/>
+        </g>
+        <g latexdraw:type="text" id="id208811496" fill="black" latexdraw:position="b">
+            <text x="360.0" y="200.0">\huge IV</text>
+        </g>
+        <g latexdraw:type="joinedLines" id="id1685541087">
+            <polyline
+                points="539.9614272117624,500.0000185982543 540.0385727882376,579.9999814017457 "
+                stroke-width="2.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow1-1685541087)"/>
+        </g>
+    </g>
+    <defs>
+        <marker overflow="visible" orient="auto" id="arrow1-249124534">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-1649264182">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-738040011">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-600794644">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-678298780">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-1685541087">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:latexIncludes/>
+            <latexdraw:displayXScale>true</latexdraw:displayXScale>
+            <latexdraw:displayYScale>true</latexdraw:displayYScale>
+            <latexdraw:unit>CM</latexdraw:unit>
+            <latexdraw:zoom>1.0</latexdraw:zoom>
+            <latexdraw:magneticGridStyle>CUSTOMISED</latexdraw:magneticGridStyle>
+            <latexdraw:gridGap>20</latexdraw:gridGap>
+            <latexdraw:magneticGrid>true</latexdraw:magneticGrid>
+            <latexdraw:version>3.3.5</latexdraw:version>
+            <latexdraw:size>
+                <latexdraw:width>960</latexdraw:width>
+                <latexdraw:height>1054</latexdraw:height>
+            </latexdraw:size>
+            <latexdraw:position>
+                <latexdraw:x>960.0</latexdraw:x>
+                <latexdraw:y>26.0</latexdraw:y>
+            </latexdraw:position>
+        </latexdraw:metadata>
+    </metadata>
+</svg>
