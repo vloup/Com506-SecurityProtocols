@@ -7,6 +7,7 @@ A: In the first part of the presentation (based on probabilistic encryption), th
 A MAC should provide:
 * Authenticity
 * Integrity
+
 Nowhere, it is mentioned that a MAC needs to provide confidentiality, that's why E&M is considered bad.
 If you look at the counterexample in the BN paper, you will see that they construct a MAC having those two properties, but leaking a bit of the plaintext.
 They just prepend the first bit of the plaintext to a PRF-based MAC, and this breaks confidentiality of the encryption scheme.
@@ -18,6 +19,7 @@ Q: In paragraph 3: you say that the approach does not apply to some real cryptog
 A: Well, how would you take into account the nonce/IV or the associated data in the classic EtM?
 Nowhere it is mentioned where and how you should authenticate those information.
 If you do not authenticate the associated data, you can make trivial forgeries (just change the AD, and you are done).
+
 So, most definitely the approach of probabilistic encryption is not suitable since you have extra data which you do not know how to authenticate.
 This problem comes from the fact that building probabilistic encryption (same messages get encrypted differently) out of deterministic encryption (same messages get encrypted to the same ciphertext) is done by providing randomness to the encryption schemes via the IV or the nonce.
 Associated data is just a plus for flexibility.
@@ -55,6 +57,7 @@ A: First they reduced the schemes with automatic counterexample finding with eas
 Then they went to prove by hand by bouding probabilities for forgeries and message recovery and compared this to a PRF.
 There are only three favored because we also have way less candidates (only 20), since we directly use the Nonce in the nonce-based symmetric scheme and not use F to create the IV to make it random.
 Also, nonce and IV are definitely not equivalent.
+
 Do not get confused.
 * IV: random initialization vector
 * Nonce: unique initialization vector. It can be a counter.
@@ -67,6 +70,7 @@ It's a matter of understanding the crypto results and not cooking our own crypto
 The problem comes from their creation of the SV value.
 It's just unclear what they want it to be (Nonce or IV) and how tight the security of this value should be.
 It goes into domino effect and make them try to apply a probabilistic encryption construction to a IV/Nonce (or whatever SV is)-based scheme, which it definitely not the result from the first paper.
+
 I try to already introduce the problem in slide 11.
 Also, GCM or CCM is not generic composition schemes, it's a dedicated mode of operation.
 EAX is scheme B1 (so it's proven secure as long as the encryption and authentication functions are secure!).
