@@ -1,4 +1,4 @@
-This is a list of questions I had received.
+This is a list of questions I received.
 
 ### Q1
 Q: In the second paragraph you mention that the E&M construction the MAC is not required to provide confidentiality. Well, how would a MAC leak part of the plaintext in the output? That happens if no encryption is done.. when you send M || MAC(M). But this is not the case, since the message is sent encrypted.
@@ -27,11 +27,11 @@ It helps to authenticate stuffs you cannot encrypt (say, an IP packet header, ot
 That's exactly the path the two authors went in 2014, asking themselves how to do generic composition when you now have the associated data and the IV/Nonce.
 
 ### Q3
-Q: Paragraph 4: when the security of nAE is defined, there is a point saying: "The output of the encryption is indistinguishable from random strings in a chosen plaintext attack, to which the adversary must not repeat nonces. " --> what does "to which the adversary must not repeat nonces" mean? Does it mean that an adversary cannot use the same nonce multiple times when chosing the plaintext to give to the oracle? 
+Q: Paragraph 4: when the security of nAE is defined, there is a point saying: "The output of the encryption is indistinguishable from random strings in a chosen plaintext attack, to which the adversary must not repeat nonces. " --> what does "to which the adversary must not repeat nonces" mean? Does it mean that an adversary cannot use the same nonce multiple times when choosing the plaintext to give to the oracle? 
 
 A: YES, you do not repeat nonces, ever. Not even the adversary is allowed to do it.
 Give two oracles to the adversary, one is a real encryption oracle, the other one just outputs random bitstrings.
-He can submit as many plaintext messages as he wish (he choses them, hence the chosen plaintext attack).
+He can submit as many plaintext messages as he wish (he chooses them, hence the chosen plaintext attack).
 Ask the adversary to tell which one is encrypting, and which one is random, on the only condition he should not repeat nonces when using the oracles.
 Our security notion is that the adversary should not be able to differentiate the two oracles.
 
@@ -54,7 +54,7 @@ A: Encryption with key K. I admit I used a simple letter 'E' for that presentati
 Q: How do you assess security of those schemes? Why is there a smaller number of secure solutions in the technique used in paragraph 4.3 (only 3 favored)? Shouldn't the IV and the nonce be equivalent? 
 
 A: First they reduced the schemes with automatic counterexample finding with easy attacks.
-Then they went to prove by hand by bouding probabilities for forgeries and message recovery and compared this to a PRF.
+Then they went to prove by hand by bounding probabilities for forgeries and message recovery and compared this to a PRF.
 There are only three favored because we also have way less candidates (only 20), since we directly use the Nonce in the nonce-based symmetric scheme and not use F to create the IV to make it random.
 Also, nonce and IV are definitely not equivalent.
 
