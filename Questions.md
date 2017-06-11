@@ -11,7 +11,7 @@ A MAC should provide:
 Nowhere, it is mentioned that a MAC needs to provide confidentiality, that's why E&M is considered bad.
 If you look at the counterexample in the BN paper, you will see that they construct a MAC having those two properties, but leaking a bit of the plaintext.
 They just prepend the first bit of the plaintext to a PRF-based MAC, and this breaks confidentiality of the encryption scheme.
-During the second part of the presentation, the authors changed the definition of the MAC and took it as a PRF, something that totally make more sense.
+During the second part of the presentation, the authors changed the definition of the MAC and took it as a PRF, something that totally makes more sense.
 
 ### Q2
 Q: In paragraph 3: you say that the approach does not apply to some real cryptographic algorithms that are based on a nonce or on an IV. What does it mean? The same for the thing of the associated data. What point are you trying to make? Do you mean that a new approach is necessary in order to consider the "real-world" techniques, such as GCM? And this new approach would be the one that was done in 2014 by those 2 guys and that is described in paragraph 4 of the report? 
@@ -74,3 +74,40 @@ It goes into domino effect and make them try to apply a probabilistic encryption
 I try to already introduce the problem in slide 11.
 Also, GCM or CCM is not generic composition schemes, it's a dedicated mode of operation.
 EAX is scheme B1 (so it's proven secure as long as the encryption and authentication functions are secure!).
+
+### Q8
+Q: Is there a real advantage to favor (or not favor) a truncatable scheme?
+
+A: Not really. All schemes in the A/B/N class have been shown to be secure as long as their underlying primitives are also secure.
+You might say that you gain flexibility when using a truncatable scheme, since you can decide to have a shorter tag.
+Still, you want to have a fixed size tag, otherwise you could just make a trivial forgery by removing the last bit of the ciphertext and pretending it is shorter.
+Also, a tag that is too short is unsecure as well.
+
+On the opposite, untruncatable schemes just get rid of that property, by "hiding" the tag behind encryption.
+
+### Q9
+Q: Which scheme A/B or N-schemes would you recommend if you want to create a new protocol?
+
+A: It depends, but of course you need to pick the favored schemes that are proven secure, not those with a weaker or unknown security bound.
+There are the already known schemes that might get favored (because they have been more studied in the past).
+For example, A4 and B1 were already known as the SIV and EAX mode of operation.
+
+Secondly, it depends to what you have in hand in term of libraries or code.
+If you can only construct B-schemes, no need to go an try to get an N-scheme implemented since you are likely to be in troubles.
+
+Then, if you look closely how many strMAC are being used in all schemes (B or N schemes if you do the three-xor construction), you can see that we just strMAC each input parameter.
+So no matter what, you will perform 3 strMAC with all B/N schemes.
+After that, it is just a matter of xoring bitstrings together and use the encryption function once, this is not a costly operation.
+So for speed, the real only advantage is in finding parallelism.
+
+The N schemes may get favored in this case because they directly use the nonce in encryption.
+Look at N1 and N2, with N1 you can encrypt in parallel of creating the tag, and N2 can decrypt in parallel of the verification the tag.
+As you see, it is impossible to have a way to do both encryption and decryption in parallel, you have to favor one for the speed.
+That's just a tradeoff you have to make.
+Also, if you want to go full crazy on parallelism, there are some interesting nonce-based modes of operation that can get trivially parallelized.
+The CTR mode of operation is an example, since it allows you to encrypt and decrypt each block concurrently.
+
+But, out of honesty, GCM is also crazily fast too, and not covered by this presentation.
+For people that submitted new AEAD (Authenticated Encryption with Associated Data) cipher to the CAESAR competition, you have to demonstrate why you should prefer your submission compared to AES-GCM, that's just how fast it is.
+But hey, CAESAR is still ongoing, so there are no winner yet.
+In the end, you should not hesitate to look outside the constructions presented during this presentation :-)
