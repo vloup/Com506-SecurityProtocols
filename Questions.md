@@ -111,3 +111,19 @@ But, out of honesty, GCM is also crazily fast too, and not covered by this prese
 For people that submitted new AEAD (Authenticated Encryption with Associated Data) cipher to the CAESAR competition, you have to demonstrate why you should prefer your submission compared to AES-GCM, that's just how fast it is.
 But hey, CAESAR is still ongoing, so there are no winner yet.
 In the end, you should not hesitate to look outside the constructions presented during this presentation :-)
+
+### Q10
+Q: When you define the reject symbol in the case of nAE, you simply define it for decryption and not for encryption. But when you present the required properties of nAE you write E(K, N, A, M) = C != \bot. I find it easy to imagine that this defines as: when the encryption doesn't result in an error, but I would rather get a confirmation of that.
+
+A: That's a good question you have and you are correct.
+I took a shortcut on that one since the only reason to have an error during encryption is because you provided incorrect parameters (formally in the paper: in the case of a parameter that does not lie in its defined domain).
+So, you should hardly never get \bot in practice.
+This definition also applies to IV-based encryption schemes.
+
+I've written it in the properties since you do not decrypt \bot (again, it's not in the ciphertext domain, so there is no meaning to "decrypt" it) and briefly mentioned it during my presentation.
+
+All in all, the most important thing is not to ignore the \bot appearing in decryption.
+That one is really important since it tells us that:
+* All parameters are within their defined domain.
+* Decryption did occur without making any error (for example no padding error).
+* And that the authentication + integrity of the message (and the other parameters) got validated.
