@@ -150,7 +150,6 @@ Keep in mind that the important thing to know is the results of this paper.
 The detail of the proof can be mostly omitted, but having a vague idea how they did it is still a good thing.
 
 ### Q12
-
 Q: Can you elaborate on malleability in the case of probabilistic encryption? (question slightly altered)
 
 A: Malleability is the property to have two distinct ciphertexts that gets decrypted to the same plaintext.
@@ -167,3 +166,18 @@ EtM does authenticate the ciphertext, so you do not suffer from this issue at al
 In the end, pAE is what you try to get by creating EtM, MtE and E&M schemes.
 You want to avoid any forgeries since you add authentication on top of the encryption scheme.
 We just show that, by looking at the encryption function as a probabilistic one, malleability kills the property of being secure against forged ciphertext in the MtE and E&M construction, but is still secure when being used with the EtM construction.
+
+### Q13
+Q: In the first part of the presentation, do we not simply care about the plaintext to be authenticated?
+
+A: In the case of a malleable cipher, authenticating the plaintext only is not sufficient.
+If you do so, you do not know which exact ciphertext got your authenticated plaintext.
+
+This subtle detail allows enough room for an adversary to take your original message, change the ciphertext but still have a valid plaintext/tag, and replay it later.
+The recipient of the message will be fooled even if it asks for fresh/unseen ciphertext/tag tuple.
+
+Practically, as an example, you can have initial encrypted+authenticated message that says "sell half of my stocks from company whatever".
+An adversary intercepting the message can then generate a second fresh new message and sell the other half of your stocks.
+
+Turns out that, in the case of probabilistic encryption, authenticating what you send is better than authenticating what you mean.
+Later in the presentation, we require the nAE to have correctness and tinyness. The properties do remove malleability.
