@@ -180,4 +180,45 @@ Practically, as an example, you can have initial encrypted+authenticated message
 An adversary intercepting the message can then generate a second fresh new message and sell the other half of your stocks.
 
 Turns out that, in the case of probabilistic encryption, authenticating what you send is better than authenticating what you mean.
-Later in the presentation, we require the nAE to have correctness and tinyness. The properties do remove malleability.
+Later in the presentation, we require the nAE to have correctness and tidiness. The properties do remove malleability.
+
+### Q14
+Q: In the 3rd section of the original paper, they explain that some candidates are invalid and take as an example A1.001111 and say that there is no way to decrypt it but I'm not sure I understand why (IV = vecMAC(M), T = vecMAC(N,A,M) and they transmit E\_k(IV, M). But why is that a problem since for A3 they make the assumption that the IV is recoverable anyway?
+
+A: First and foremost, A1.001 111 is broken because you can apply Atk-1 (a summary of all attacks can be found in Figure 10) too.
+You break indistinguishability under a chosen plaintext attack when you submit (N1, A, M) and (N2, A, M) to both a random oracle and a valid encryption oracle.
+If you do so, you can tell which one is the valid and which one is the random one by comparing the ciphertext (if they are equal for both queries, it's the encryption oracle).
+In other word, you break privacy of the encryption scheme by making it deterministic.
+
+As written, some schemes are impossible to decrypt.
+When you get C and T, how do you get back the IV to correctly decrypt?
+It depends from M, which is exactly what you are trying to get.
+It's a snake eating its own tail.
+
+The "validity" of the scheme requires, that is provides the correct syntax for every possible ivE scheme and every possible vecMAC.
+If we consider an IV-based scheme that does not include the IV in the ciphertext, then the scheme A1.001 111 will not be able to decrypt.
+Thus there will be underlying schemes that will result in invalid A1.001 111, and so we consider it invalid in general.
+Aside from that, here comes the magic with A3 or A1.101 111 with the three-xor construction for recovering the IV:
+
+You have T, A and N as inputs.
+
+Compute strMAC(A).
+
+Then, T xor strMAC(A) = vecMAC(N, A, M) xor strMAC(A)
+
+= strMAC(N) xor strMAC(A) xor strMAC(M) xor strMAC(A)
+
+= strMAC(N) xor strMAC(M)
+
+= vecMAC(N, \_, M) = IV
+
+You can pretty much do the same thing if you take A1.001 111 and apply the three-xor construction too.
+
+The three-xor construction is just one particular instance of vecMAC.
+In general, you may be using a vecMAC that does not allow you to recover some partial information.
+
+We are not sure why they kept A3, it seems that we objected against it in with our definition of validity.
+In any case, your example of A1.001 111 is not completely general and broken (as mentioned earlier).
+
+the authors may just have kept it because it was the only scheme in this situation (decryption impossible, but proven secure along with all other A1.\* schemes).
+Just adding the assumption of being able to recover the IV (as I have shown with the three-xor construction, it is something vastly possible, but not guaranteed in general) is just enough to correspond to the definition of a IV-based nAE.
