@@ -127,3 +127,43 @@ That one is really important since it tells us that:
 * All parameters are within their defined domain.
 * Decryption did occur without making any error (for example no padding error).
 * And that the authentication + integrity of the message (and the other parameters) got validated.
+
+### Q11
+Q: Can you give a vague idea about how the proofs are done?
+
+A: In this paper, the proof is done in a rather classical way.
+First, they decided to define which type of attack they will study (forgery attempt).
+Secondly, they did define the power of an adversary (what tools he has in hands to attack our scheme, usually an encryption and decryption oracles) and its goal (create a new fresh ciphertext that is valid).
+Then, the proof goes by letting the adversary "play" with what we provided him.
+
+From there, we can estimate the probability of success for our adversary to win, and see if it can be better than just a random guess.
+If the adversary cannot do any better than a random guess, our scheme is proven secure.
+It's doable since you assume that the vecMAC function behaves like PRF.
+The result of the probabilities can be found in Figure 9 of the paper, with q\_d being the number of queries to the decryption oracle.
+
+The proof to show that a scheme is not secure is done by counter example.
+You have a list of them on page 24 up to 26.
+It's just a method to follow when given oracles (both encryption, decryption).
+The one I showed during the presentation is Atk-5.
+
+Keep in mind that the important thing to know is the results of this paper.
+The detail of the proof can be mostly omitted, but having a vague idea how they did it is still a good thing.
+
+### Q12
+
+Q: Can you elaborate on malleability in the case of probabilistic encryption? (question slightly altered)
+
+A: Malleability is the property to have two distinct ciphertexts that gets decrypted to the same plaintext.
+You can easily create such ciphers by just appending a sequence of random bits at the end of the ciphertext after encryption, and truncating them right before decryption.
+A curious user would just change any bits and still get the same plaintext.
+Usually, as a rule of thumb, malleability happens when the ciphertext is longer than the plaintext (pigeonhole principle).
+If not, your encryption/decryption scheme is not bijective, and you might end up having problems encrypting some messages that is not mapped to anything in the ciphertext domain.
+
+So, given a valid ciphertext message, if you can find a second message that gets decrypted to the same plaintext, you are able to break E&M and MtE.
+The issue comes from the fact that we authenticate the plaintext, not the ciphertext.
+With these constructions, you inherit the same property as the encryption function (malleability) and end up with forgery attacks.
+EtM does authenticate the ciphertext, so you do not suffer from this issue at all.
+
+In the end, pAE is what you try to get by creating EtM, MtE and E&M schemes.
+You want to avoid any forgeries since you add authentication on top of the encryption scheme.
+We just show that, by looking at the encryption function as a probabilistic one, malleability kills the property of being secure against forged ciphertext in the MtE and E&M construction, but is still secure when being used with the EtM construction.
